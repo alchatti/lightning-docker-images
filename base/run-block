@@ -1,7 +1,3 @@
-# Drupal Commerce Docker Container
-FROM php:7-fpm
-MAINTAINER Matt Glaman <nmd.matt@gmail.com>
-
 # Packages
 RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
   libfreetype6-dev \
@@ -42,5 +38,3 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 # Set up the application directory
 VOLUME ["/app"]
 WORKDIR /app
-
-CMD ["php-fpm"]
