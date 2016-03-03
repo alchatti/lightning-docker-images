@@ -2,7 +2,7 @@ build:
 	# Base images
 	docker build -t mglaman/drupal-commerce:base-5.6-apache base/5.6-apache
 	docker build -t mglaman/drupal-commerce:base-5.6-fpm base/5.6-fpm
-	docker build -t mglaman/drupal-commerce:base-7-spache base/7-apache
+	docker build -t mglaman/drupal-commerce:base-7-apache base/7-apache
 	docker build -t mglaman/drupal-commerce:base-7-fpm base/7-fpm
 
 	# v2

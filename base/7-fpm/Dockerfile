@@ -13,23 +13,9 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
   curl \
   git \
   unzip \
-  && docker-php-ext-install mcrypt zip bz2 pdo_mysql mysqli mbstring opcache \
+  && docker-php-ext-install mcrypt zip bz2 bcmath pdo_mysql mysqli mbstring opcache \
   && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
   && docker-php-ext-install gd
-
-# Install Twig C extension
-RUN curl -L -o /root/twig.tar.gz https://github.com/twigphp/Twig/archive/v1.24.0.tar.gz && \
-	cd /root && \
-	tar -zxvf twig.tgz && \
-	cd /root/Twig-1.24.0/ext/twig && \
-	/usr/local/bin/phpize && \
-	./configure --with-php-config=/usr/local/bin/php-config && \
-	make  && \
-	make install && \
-	cd /root && \
-	rm -fr /root/CTwig-1.24.0 && \
-	rm -fr /root/twig.tgz && \
-  echo "extension=twig.so" > $PHP_INI_DIR/conf.d/twig.ini
 
 # Environmental Variables
 ENV COMPOSER_HOME /root/composer
@@ -37,7 +23,8 @@ ENV COMPOSER_HOME /root/composer
 # Add global binary directory to path
 ENV PATH $COMPOSER_HOME/vendor/bin:$PATH
 
-RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer && \
+  composer config -g github-oauth.github.com b920a503e5bb62ee4f4bcfeb1dfc76bad0706a2c
 
 # Set up the application directory
 VOLUME ["/app"]
