@@ -2,6 +2,12 @@
 FROM php:5.6-fpm
 MAINTAINER Matt Glaman <nmd.matt@gmail.com>
 
+# Memory Limit
+RUN echo "memory_limit=256M" > $PHP_INI_DIR/conf.d/memory-limit.ini
+
+# Time Zone
+RUN echo "date.timezone=America/Chicago" > $PHP_INI_DIR/conf.d/date_timezone.ini
+
 # Packages
 RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
   libfreetype6-dev \
@@ -41,8 +47,4 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
   composer config -g github-oauth.github.com b920a503e5bb62ee4f4bcfeb1dfc76bad0706a2c
 
 # Set up the application directory
-VOLUME ["/app"]
 WORKDIR /app
-
-
-CMD ["php-fpm"]
