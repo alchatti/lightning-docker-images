@@ -2,8 +2,8 @@
 FROM mglaman/drupal-commerce:base-7-fpm
 MAINTAINER Matt Glaman <nmd.matt@gmail.com>
 
-# Install Drupal via  drupal-composer/drupal-project
-RUN composer create-project  drupal-composer/drupal-project \
+# Install Drupal via drupal-composer/drupal-project
+RUN composer create-project drupal-composer/drupal-project:7.x-dev \
  --stability dev \
  --no-interaction \
  .
