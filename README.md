@@ -1,13 +1,11 @@
-# Drupal Commerce Docker Images
+# Lightning Docker Images
 
-[Docker](http://docker.com) images to install and run [Drupal Commerce](https://drupalcommerce.org/) v1.x or v2.x.
+[Docker](http://docker.com) images to install and run [lightning](https://lightning.acquia.com/).
 
 ## Features
 
 * Supports `php-5.6` and `php-7` images either with `apache2` or `fpm` variants.
-* Installs Drupal via Composer
-  * For v1.x, via `drupal-composer/drupal-project`
-  * For v2.x, via `drupalcommerce/project-base`
+* Installs Drupal via Composer via `acquia/lightning-project`
   
 For all variants you will need to link a database container. If using a `fpm` variant, you will need an appropriate web
 server variant.
@@ -16,7 +14,7 @@ server variant.
 ## Installation / Usage
 
 ````sh
-docker run -d -v $(pwd):/app mglaman/drupal-commerce:v2-5.6-apache --link db_container
+docker run -d -v $(pwd):/app audiojak/lightning:v1-apache --link db_container
 ````
 
 ## Install from source
@@ -27,13 +25,13 @@ source directly:
 1. Download the source:
 
     ``` sh
-    $ git clone https://mglaman/docker-drupal-commerce.git
+    $ git clone https://github.com/audiojak/lightning-docker-images
     ```
 
 2. Switch to the `composer-docker` directory:
 
     ``` sh
-    $ cd docker-drupal-commerce
+    $ cd lightning-docker-images
     ```
 
 3. Build the containers
