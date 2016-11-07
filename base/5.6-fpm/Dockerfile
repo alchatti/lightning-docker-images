@@ -1,6 +1,6 @@
-# Drupal Commerce Docker Container
+# Acquia Lightning Docker Container
 FROM php:5.6-fpm
-MAINTAINER Matt Glaman <nmd.matt@gmail.com>
+MAINTAINER John Kennedy <john.kennedy@acquia.com>
 
 # Memory Limit
 RUN echo "memory_limit=256M" > $PHP_INI_DIR/conf.d/memory-limit.ini

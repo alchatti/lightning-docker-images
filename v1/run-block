@@ -1,8 +1,5 @@
-# Install Drupal via  drupal-composer/drupal-project
-RUN composer create-project  drupal-composer/drupal-project \
+# Install Acquia Lightning via acquia/lightning-project
+RUN composer create-project acquia/lightning-project \
  --stability dev \
  --no-interaction \
  .
-
-# Require Drupal Commerce
-RUN composer require drupal/commerce:7.1.*

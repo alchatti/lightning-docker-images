@@ -1,5 +1,0 @@
-# Install Drupal Commerce 2.x via drupalcommerce/project-base
-RUN composer create-project drupalcommerce/project-base \
- --stability dev \
- --no-interaction \
- .

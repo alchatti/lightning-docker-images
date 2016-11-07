@@ -14,4 +14,4 @@ php /app/web/core/scripts/run-tests.sh \
     --dburl ${SIMPLETEST_DB} \
     --sqlite /tmp/tmp.sqlite \
     --color \
-    commerce
+    lightning

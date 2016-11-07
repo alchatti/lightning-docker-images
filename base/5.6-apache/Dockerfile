@@ -1,6 +1,6 @@
-# Drupal Commerce Docker Container
+# Acquia Lightning Docker Container
 FROM php:5.6-apache
-MAINTAINER Matt Glaman <nmd.matt@gmail.com>
+MAINTAINER John Kennedy <john.kennedy@acquia.com>
 
 RUN a2enmod rewrite
 

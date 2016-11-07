@@ -1,12 +1,9 @@
-# Drupal Commerce Docker Container
-FROM mglaman/drupal-commerce:base-5.6-fpm
-MAINTAINER Matt Glaman <nmd.matt@gmail.com>
+# Acquia Lightning Docker Container
+FROM audiojak/lightning:base-5.6-fpm
+MAINTAINER John Kennedy <john.kennedy@acquia.com>
 
-# Install Drupal via drupal-composer/drupal-project
-RUN composer create-project drupal-composer/drupal-project:7.x-dev \
+# Install Acquia Lightning via acquia/lightning-project
+RUN composer create-project acquia/lightning-project \
  --stability dev \
  --no-interaction \
  .
-
-# Require Drupal Commerce
-RUN composer require drupal/commerce:7.1.*

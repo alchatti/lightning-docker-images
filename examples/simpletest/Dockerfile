@@ -1,6 +1,6 @@
-# Drupal Commerce Docker Container
-FROM mglaman/drupal-commerce:v2-5.6-fpm
-MAINTAINER Matt Glaman <nmd.matt@gmail.com>
+# Acquia Lightning Docker Container
+FROM audiojak/lightning:v1-5.6-fpm
+MAINTAINER John Kennedy <john.kennedy@acquia.com>
 
 # Memory Limit
 RUN echo "memory_limit=-1" > $PHP_INI_DIR/conf.d/memory-limit.ini && \
