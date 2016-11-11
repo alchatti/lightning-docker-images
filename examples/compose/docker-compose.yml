@@ -2,8 +2,16 @@ mariadb:
     command: 'mysqld --user=root --verbose'
     image: mariadb
     ports: ['3306']
-    volumes: ['./mysql.cnf:/etc/mysql/my.cnf']
+    volumes: ['./drupal.cnf:/etc/mysql/conf.d/drupal.cnf']
+    volumes_from:
+       - data
     environment: { MYSQL_DATABASE: data, MYSQL_USER: mysql, MYSQL_PASSWORD: mysql, MYSQL_ALLOW_EMPTY_PASSWORD: 'yes', MYSQL_ROOT_PASSWORD: 'root' }
+data:
+  image: busybox
+  volumes:
+    - /var/lib/mysql
 lightning:
-    image: 'audiojak/lightning:v1-5.6-apache'
+    image: 'audiojak/lightning:v1-7-apache'
+    links: 
+       - mariadb:mysql
     ports: ['80']

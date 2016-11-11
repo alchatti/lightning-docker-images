@@ -6,7 +6,7 @@ MAINTAINER John Kennedy <john.kennedy@acquia.com>
 RUN echo "memory_limit=256M" > $PHP_INI_DIR/conf.d/memory-limit.ini
 
 # Time Zone
-RUN echo "date.timezone=America/Chicago" > $PHP_INI_DIR/conf.d/date_timezone.ini
+RUN echo "date.timezone=America/New_York" > $PHP_INI_DIR/conf.d/date_timezone.ini
 
 # Packages
 RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
@@ -31,6 +31,3 @@ ENV PATH $COMPOSER_HOME/vendor/bin:$PATH
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer && \
   composer config -g github-oauth.github.com b920a503e5bb62ee4f4bcfeb1dfc76bad0706a2c
-
-# Set up the application directory
-WORKDIR /app

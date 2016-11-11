@@ -6,4 +6,4 @@ MAINTAINER John Kennedy <john.kennedy@acquia.com>
 RUN composer create-project acquia/lightning-project \
  --stability dev \
  --no-interaction \
- .
+ lightning
