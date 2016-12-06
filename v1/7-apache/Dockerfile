@@ -14,7 +14,7 @@ RUN composer create-project acquia/lightning-project \
 RUN composer --no-interaction global require drush/drush:dev-master
 
 # Apache Configuration
-RUN sed -i 's/html/lightning/g' /etc/apache2/sites-enabled/000-default.conf
+RUN sed -i 's/html/lightning\/docroot/g' /etc/apache2/sites-enabled/000-default.conf
 
 # Drupal install requirements
 RUN mkdir lightning/docroot/sites/default/files
