@@ -22,7 +22,3 @@ RUN chmod 755 lightning/docroot/sites/default/files
 RUN chown www-data lightning/docroot/sites/default/files
 RUN touch lightning/docroot/sites/default/settings.php
 RUN chown www-data lightning/docroot/sites/default/settings.php
-
-# Install Lightning
-WORKDIR /var/www/lightning/docroot
-#RUN drush site-install --db-url=mysql://mysql:mysql@mysql/data --account-name=admin --account-pass=admin -y
