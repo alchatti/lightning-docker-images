@@ -8,9 +8,6 @@ WORKDIR /var/www
 #--stability dev \
 # --no-interaction \
 # df
- 
-# Install drush
-#RUN composer --no-interaction global require drush/drush:dev-master
 
 # Apache Configuration
 RUN sed -i 's/html/df\/docroot/g' /etc/apache2/sites-enabled/000-default.conf
@@ -34,19 +31,9 @@ RUN touch sites/default/settings.php
 RUN chown www-data sites/default/settings.php
 # Drupal install requirements
 
-
 # Drush Site Install
-#RUN drush si df --db-url=sqlite://sites/default/files/.ht.sqlite --account-name=admin --account-pass=admin --site-name=Demo -y
-#RUN drush es dfs_fin
-
-
-
-
-
-# Install DF
-#WORKDIR /var/www/df/docroot
-#RUN drush si df --db-url=sqlite://sites/default/files/.ht.sqlite --account-name=admin --account-pass=admin --site-name=Demo -y
-#RUN chown www-data sites/default/files/.ht.sqlite
+RUN ../vendor/drush/drush/drush si df --db-url=sqlite://sites/default/files/.ht.sqlite --account-name=admin --account-pass=admin --site-name=Demo -y
+RUN ../vendor/drush/drush/drush es dfs_fin
 
 # Port mapping
-#EXPOSE 80
+EXPOSE 80
