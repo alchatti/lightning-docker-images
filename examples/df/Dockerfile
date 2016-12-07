@@ -22,18 +22,18 @@ RUN composer config --global github-protocols https
 WORKDIR /var/www/df
 RUN composer install --no-interaction
 
-# Install Drupal
+# Drupal install requirements
 WORKDIR /var/www/df/docroot
 RUN mkdir sites/default/files
 RUN chmod 755 sites/default/files
 RUN chown www-data sites/default/files
 RUN touch sites/default/settings.php
 RUN chown www-data sites/default/settings.php
-# Drupal install requirements
 
 # Drush Site Install
-RUN ../vendor/drush/drush/drush si df --db-url=sqlite://sites/default/files/.ht.sqlite --account-name=admin --account-pass=admin --site-name=Demo -y
-RUN ../vendor/drush/drush/drush es dfs_fin
+RUN ../vendor/drush/drush/drush si df --db-url=sqlite://sites/default/files/.ht.sqlite --account-name=admin --account-pass=admin --site-name=Demo -y 2>/dev/null
+#RUN chown -R www-data sites/default/files
+#RUN ../vendor/drush/drush/drush es dfs_fin
 
 # Port mapping
 EXPOSE 80
