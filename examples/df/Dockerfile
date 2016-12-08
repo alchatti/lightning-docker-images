@@ -31,8 +31,8 @@ RUN touch sites/default/settings.php
 RUN chown www-data sites/default/settings.php
 
 # Drush Site Install
-RUN ../vendor/drush/drush/drush si df --db-url=sqlite://sites/default/files/.ht.sqlite --account-name=admin --account-pass=admin --site-name=Demo -y 2>/dev/null
-#RUN chown -R www-data sites/default/files
+RUN ../vendor/drush/drush/drush si df --db-url=sqlite://sites/default/files/.ht.sqlite --account-name=admin --account-pass=admin --site-name=Demo -y  > /dev/null 2>&1
+RUN chown -R www-data sites/default/files
 #RUN ../vendor/drush/drush/drush es dfs_fin
 
 # Port mapping
