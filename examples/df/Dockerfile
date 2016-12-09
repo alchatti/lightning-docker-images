@@ -6,6 +6,9 @@ WORKDIR /var/www
 # Apache Configuration
 RUN sed -i 's/html/demo-2016-12-06\/docroot/g' /etc/apache2/sites-enabled/000-default.conf
 
+# PHP memory limit
+RUN sed -i 's/256M/1024M/g' /usr/local/etc/php/conf.d/memory-limit.ini
+
 # Install mariadb - unfortunately it seems we need to run fat for demo framework
 RUN DEBIAN_FRONTEND=noninteractive apt-get install mariadb-server -y
 
@@ -33,6 +36,10 @@ RUN echo "\$settings['hash_salt'] = '_z_XJnV6wFLnxeg4sBIaRjv0Ldw3mTe-1tM0Xma7XWY
 
 RUN chown -R www-data demo-2016-12-06/docroot/sites/default
 
+# Import the database
+WORKDIR /var/www/demo-2016-12-06/docroot
+RUN service mysql start && ../vendor/drush/drush/drush cr
+
 # EXPOSE web
 EXPOSE 80
 
@@ -43,7 +50,6 @@ CMD ["sh", "-c", "service mysql start; apache2-foreground"]
 
 # Import DB
 #WORKDIR /var/www/df/docroot
-#
 
 # Install Acquia DF via acquia/df-project
 #RUN composer create-project acquia/df-project \
@@ -68,7 +74,6 @@ CMD ["sh", "-c", "service mysql start; apache2-foreground"]
 #RUN chown www-data sites/default/files
 #RUN touch sites/default/settings.php
 #RUN chown www-data sites/default/settings.php
-
 
 # Drush Site Install
 #RUN ../vendor/drush/drush/drush si df --db-url=sqlite://sites/default/files/.ht.sqlite --account-name=admin --account-pass=admin --site-name=Demo -y > /dev/null 2>&1
