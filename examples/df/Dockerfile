@@ -12,6 +12,9 @@ WORKDIR /var/www
 # Apache Configuration
 RUN sed -i 's/html/df\/docroot/g' /etc/apache2/sites-enabled/000-default.conf
 
+#PHP Config
+RUN sed -i 's/256/1024/g' /usr/local/etc/php/conf.d/memory-limit.ini 
+
 # Clone repo
 RUN git clone https://github.com/acquia/df.git
 
@@ -31,9 +34,9 @@ RUN touch sites/default/settings.php
 RUN chown www-data sites/default/settings.php
 
 # Drush Site Install
-RUN ../vendor/drush/drush/drush si df --db-url=sqlite://sites/default/files/.ht.sqlite --account-name=admin --account-pass=admin --site-name=Demo -y  > /dev/null 2>&1
+RUN ../vendor/drush/drush/drush si df --db-url=sqlite://sites/default/files/.ht.sqlite --account-name=admin --account-pass=admin --site-name=Demo -y
 RUN chown -R www-data sites/default/files
-#RUN ../vendor/drush/drush/drush es dfs_fin
+RUN ../vendor/drush/drush/drush es dfs_fin
 
 # Port mapping
 EXPOSE 80
