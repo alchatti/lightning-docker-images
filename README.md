@@ -2,6 +2,8 @@
 
 [Docker](http://docker.com) images to install and run [lightning](https://lightning.acquia.com/).
 
+[![](https://images.microbadger.com/badges/image/audiojak/lightning.svg)](https://microbadger.com/images/audiojak/lightning "Get your own image badge on microbadger.com")
+
 ## Features
 
 * Supports `php-5.6` and `php-7` images either with `apache2` or `fpm` variants.
@@ -39,4 +41,4 @@ source directly:
     ``` sh
     $ make
     ```
-[![](https://images.microbadger.com/badges/image/audiojak/lightning.svg)](https://microbadger.com/images/audiojak/lightning "Get your own image badge on microbadger.com")
+
