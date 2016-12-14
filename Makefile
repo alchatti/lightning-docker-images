@@ -10,6 +10,11 @@ build:
 	docker build -t audiojak/lightning:v1-5.6-fpm v1/5.6-fpm
 	docker build -t audiojak/lightning:v1-7-apache v1/7-apache
 	docker build -t audiojak/lightning:v1-7-fpm v1/7-fpm
-
+	
+	# Installed Lightning Demo w/ SQLite
+	docker build -t audiojak/lightning:demo examples/demo
+	
+	# Installed Demo Framework w/ MariaDB
+	docker build -t audiojak/lightning:df examples/df
 
 .PHONY: build
